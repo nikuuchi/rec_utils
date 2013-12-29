@@ -9,3 +9,5 @@ params = {"type": "hoge", "location": "fuga"}
 rpc = createJsonRPC(method, params)
 a = postData(rpc, url)
 print a["result"]
+
+mongo_ip = "10.211.55.4"
