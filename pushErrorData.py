@@ -14,3 +14,5 @@ print a["result"]
 mongo_ip = "10.211.55.4"
 m = Mongo(mongo_ip)
 count = m.getErrorDataCount("struct")
+for x in count:
+    print x

@@ -9,5 +9,6 @@ class Mongo:
         self.conn = MongoClient(self.addr)
         self.db   = self.conn.test
 
-    def getErrorData(errorMessage):
-        return errorMessage
+    def getErrorDataCount(self, errorMessage):
+        ret = self.db.compile_message.find({"hoge" :errorMessage})
+        return ret
