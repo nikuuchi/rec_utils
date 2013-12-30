@@ -1,10 +1,30 @@
+rec:
+    url: http://live.assure-it.org/rec3/api/3.0/
 mongo:
     ip: 0.0.0.0
+mysql:
+    dbName: zabbix
+    user: foo
+    pass: bar
 zabbix:
-    ip: 0.0.0.0
-    web: 10088
-    db: 10093
-    c42: 10089
-    c43: 10090
-    c245: 10092
-    c246: 10091
+    web:
+        hostid: 10088
+        location: WebServer
+        itemid: 23795
+    db:
+        hostid: 10093
+        location: DBServer
+        itemid: 23794
+    app:
+        - hostid: 10089
+          location: AppServer
+          itemid: 23790
+        - hostid: 10090
+          location: AppServer
+          itemid: 23791
+        - hostid: 10092
+          location: AppServer
+          itemid: 23792
+        - hostid: 10091
+          location: AppServer
+          itemid: 23793

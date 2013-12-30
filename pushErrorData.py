@@ -3,9 +3,10 @@
 from postUtils import *
 from mongoUtils import *
 
-url = "http://10.211.55.4:3001/api/3.0"
+url = "http://live.assure-it.org/rec3/api/3.0/"
 method = "getLatestData"
-params = {"type": "hoge", "location": "fuga"}
+#method = "pushRawData"
+params = {"type": "hoge", "location": "fuga", "authid":"auth", "data":3}
 
 rpc = createJsonRPC(method, params)
 a = postData(rpc, url)
