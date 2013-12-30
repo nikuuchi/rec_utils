@@ -6,12 +6,14 @@ import yaml
 
 def loadConfig():
     config = {}
-    if os.path.exists("default.yaml"):
-        with open("default.yaml") as f:
+    default_path = os.path.join(os.path.dirname(__file__), 'default.yaml')
+    if os.path.exists(default_path):
+        with open(default_path) as f:
             config.update(yaml.load(f))
 
-    if os.path.exists("development.yaml"):
-        with open("development.yaml") as f:
+    dev_path = os.path.join(os.path.dirname(__file__), 'development.yaml')
+    if os.path.exists(dev_path):
+        with open(dev_path) as f:
             config.update(yaml.load(f))
     return config
 
