@@ -2,18 +2,29 @@
 # -*- coding: utf-8 -*-
 from postUtils import *
 from mongoUtils import *
+import datetime
+import time
 
-url = "http://live.assure-it.org/rec3/api/3.0/"
-method = "getLatestData"
-#method = "pushRawData"
-params = {"type": "hoge", "location": "fuga", "authid":"auth", "data":3}
+def datetime2long(date):
+    return long(time.mktime(date.timetuple()))
 
-rpc = createJsonRPC(method, params)
-a = postData(rpc, url)
-print a["result"]
+if __name__ == '__main__':
+    config = loadConfig()
 
-mongo_ip = "10.211.55.4"
-m = Mongo(mongo_ip)
-count = m.getErrorDataCount("struct")
-for x in count:
-    print x
+    url = config["rec"]["url"]
+    method = "pushRawData"
+    params_orig = {"location": "AppServer", "authid":"aspen"}
+
+    end_time = datetime2long(datetime.datetime.today())
+    start_time = end_time - (60 * 90) # 90 minutes
+
+    mongo = Mongo(config["mongo"]["ip"])
+
+    count = mongo.getErrorDataCount("struct", start_time, end_time) #FIXME
+
+    params = params_orig.copy()
+    params["type"] = "" #FIXME
+    params["data"] = count
+
+    rpc = createJsonRPC(method, params)
+    postData(rpc, url)
