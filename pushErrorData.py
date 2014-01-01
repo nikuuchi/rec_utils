@@ -19,12 +19,12 @@ if __name__ == '__main__':
     start_time = end_time - (60 * 90) # 90 minutes
 
     mongo = Mongo(config["mongo"]["ip"])
+    for x in config["data"]:
+        count = mongo.getErrorDataCount(x, start_time, end_time)
+        print count
+        #params = params_orig.copy()
+        #params["type"] = "" #FIXME
+        #params["data"] = count
 
-    count = mongo.getErrorDataCount("struct", start_time, end_time) #FIXME
-
-    params = params_orig.copy()
-    params["type"] = "" #FIXME
-    params["data"] = count
-
-    rpc = createJsonRPC(method, params)
-    postData(rpc, url)
+        #rpc = createJsonRPC(method, params)
+        #postData(rpc, url)

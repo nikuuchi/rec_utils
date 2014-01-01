@@ -27,7 +27,7 @@ if __name__ == '__main__':
     post_check_result("IsDown", db_config["location"], data, Rec_url)
 
     app_configs = config["zabbix"]["app"]
-    app_location = app_configs[0]["location"]
+    app_location = app_configs[0]["location"] #FIXME 0
     data = 1
     for it in app_configs:
         data = data & check_item(sql, web_config)

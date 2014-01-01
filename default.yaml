@@ -1,7 +1,7 @@
 rec:
     url: http://live.assure-it.org/rec3/api/3.0/
 mongo:
-    ip: 0.0.0.0
+    ip: 10.211.55.4
 mysql:
     dbName: zabbix
     user: foo
@@ -28,3 +28,6 @@ zabbix:
         - hostid: 10091
           location: AppServer
           itemid: 23793
+data:
+    - struct
+    - ;
