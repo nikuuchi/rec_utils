@@ -22,9 +22,9 @@ if __name__ == '__main__':
     for x in config["data"]:
         count = mongo.getErrorDataCount(x, start_time, end_time)
         print count
-        #params = params_orig.copy()
-        #params["type"] = "" #FIXME
-        #params["data"] = count
+        params = params_orig.copy()
+        params["type"] = x+".count"
+        params["data"] = count
 
-        #rpc = createJsonRPC(method, params)
-        #postData(rpc, url)
+        rpc = createJsonRPC(method, params)
+        postData(rpc, url)
