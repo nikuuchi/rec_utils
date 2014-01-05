@@ -20,10 +20,10 @@ if __name__ == '__main__':
 
     mongo = Mongo(config["mongo"]["ip"])
     for x in config["data"]:
-        count = mongo.getErrorDataCount(x, start_time, end_time)
+        count = mongo.getErrorDataCount(x["search"], start_time, end_time)
         print count
         params = params_orig.copy()
-        params["type"] = x+".count"
+        params["type"] = "count" + x["type"]
         params["data"] = count
 
         rpc = createJsonRPC(method, params)

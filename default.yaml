@@ -29,5 +29,11 @@ zabbix:
           location: AppServer
           itemid: 23793
 data:
-    - struct
-    - ;
+    - search: struct
+      type: Struct
+    - search: ;
+      type: Column
+    - search: undeclared identifier
+      type: Undeclared
+    - search: initializer list
+      type: Array
